@@ -28,7 +28,7 @@ async function fetch_country_list(search_input){
             //countries.push(c.country);
         });
     }
-    return Promise.all(country_list.sort());
+    return country_list.sort();
 };
 
 export {fetch_country_data, fetch_country_list}

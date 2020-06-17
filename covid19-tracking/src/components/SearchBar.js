@@ -4,16 +4,31 @@ import { fetch_country_list } from '../data_fetcher';
 
 const useStyles = makeStyles((theme) =>({
     root: {
-        display: 'flex',
-        justifyContent: 'center',
+        "@media (min-width:650px)":{
+            display: 'flex',
+            justifyContent: 'center',
+        },
+        "@media (max-width:650px)":{
+            display:'block',
+        }
     },
     search_form:{
         margin: theme.spacing(2),
-        minWidth: 300,
+        "@media (min-width:650px)":{
+            minWidth: 300,
+        },
+        "@media (max-width:650px)":{
+            width:'90%',
+        }
     },
     select_form:{
         margin: theme.spacing(2),
-        minWidth: 150,
+        "@media (min-width:650px)":{
+            minWidth: 150,
+        },
+        "@media (max-width:650px)":{
+            width:'90%',
+        }
     },
   }));
 
