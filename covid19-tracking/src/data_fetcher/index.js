@@ -15,11 +15,10 @@ async function fetch_country_data(country_name){
 async function fetch_country_list(search_input){
     let res = await fetch(request_link + 'countries-search?limit=20&search=' + search_input);
     let res_json =  await res.json();
-    let total_pages = await res_json.data.paginationMeta.totalPages;
     //
     let country_list = [];
     
-    for(var i=1; i<=total_pages; i++){
+    for(var i=1; i<=res_json.data.paginationMeta.totalPages; i++){
         let detail_res = await fetch(request_link + 'countries-search?limit=20&search=' + search_input + '&page=' + i.toString());
         let detail_res_data = await detail_res.json();
         detail_res_data.data.rows.forEach((c) => {
@@ -29,7 +28,7 @@ async function fetch_country_list(search_input){
             //countries.push(c.country);
         });
     }
-    return country_list.sort();
+    return Promise.all(country_list.sort());
 };
 
 export {fetch_country_data, fetch_country_list}

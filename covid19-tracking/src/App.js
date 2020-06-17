@@ -45,7 +45,8 @@ export default class App extends Component{
   }
 }
 
-/*        
-      <TextField id="standard-basic" label="Country Search" fullWidth onChange = {(e) => this.handle_select(e.target.value)}/><NativeSelect defaultChecked = {this.selected} onChange = {(e) => this.handle_select(e.target.value)}>
-          {options.map((k,v) => <option key = {v} value = {k}>{k}</option>)}
-        </NativeSelect>*/ 
+/*
+Difficulties I faced:
+NativeSelect updating and displaying selected state from different component (.js file)
+Async Await Concurrency
+*/

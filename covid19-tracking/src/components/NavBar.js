@@ -14,6 +14,7 @@ export default function NavBar(){
         <div className = {classes.root}>
             <AppBar position = 'static'>
                 <Typography variant='h1' color='inherit'>COVID-19 Data Tracking</Typography>
+                <Typography variant='body1' color='inherit'>Async/Await Concurrency TB Optimized</Typography>
             </AppBar>
         </div>
     );

@@ -25,7 +25,10 @@ export default function SearchBar(props){
         options: [],
       });
 
-    const handle_select = props.handler;
+    const handle_select = (selected) =>{
+        state.selection = selected
+        props.handler(selected)
+    }
 
     const handle_search = async (search) => {
         var country_selections = [];
@@ -46,17 +49,17 @@ export default function SearchBar(props){
                 <TextField id="search-country" label="Search Country" onChange = {(e) => handle_search(e.target.value)}/>
             </FormControl>
             <FormControl className={classes.select_form}>
-                <InputLabel></InputLabel>
+            <InputLabel>Selected</InputLabel>
                 <NativeSelect
                 value={state.selection}
                 onChange={(e) => handle_select(e.target.value)}
                 >
+                <option value={state.selection} key={state.selection}>{state.selection}</option>
                 {state.options.map((v) => 
-                    <option value = {v} key = {v}>{v}</option>
+                    <option value = {v} key={v}>{v}</option>
                 )};
                 </NativeSelect>
             </FormControl>
-            
         </div>
     );
 }
