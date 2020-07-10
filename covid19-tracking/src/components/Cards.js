@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Typography, makeStyles, CardContent, ListItem, ListItemText} from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles((theme) =>({
     root: {
@@ -36,6 +37,9 @@ const useStyles = makeStyles((theme) =>({
       '& h1':{
         color: '#FA8978',
       },
+      '& h2':{
+        backgroundColor:'#FA8978',
+      },
     },
     covidConfirmed:{
       width:300,
@@ -43,6 +47,9 @@ const useStyles = makeStyles((theme) =>({
       margin:theme.spacing(2),
       '& h1':{
         color: '#FFDD94',
+      },
+      '& h2':{
+        backgroundColor:'#FFDD94',
       },
     },
     covidRecovered:{
@@ -57,37 +64,42 @@ const useStyles = makeStyles((theme) =>({
 
 export default function Cards(props){
     const classes = useStyles();
-
     const selected_country_data = props.data;
-    console.log(props.data);
+    const spinner = (Object.keys(selected_country_data).length === 0);
 
     return(
         <div className = {classes.root}>
           <ListItem button className = {classes.list}>
-            <ListItemText primary= {selected_country_data.cases_per_mill_pop} secondary = '/ Million Population' />
-            <ListItemText primary= {selected_country_data.new_deaths} secondary = ' new death' />
-            <ListItemText primary= {selected_country_data.new_cases} secondary = ' new confirmed' />
+            {
+            spinner 
+              ? <Skeleton variant="rect" width="100%" height={50} />
+              : <><ListItemText primary= {selected_country_data.cases_per_mill_pop} secondary = '/ Million Population' />
+                <ListItemText primary= {selected_country_data.active_cases} secondary = ' active cases' />
+                <ListItemText primary= {selected_country_data.serious_critical} secondary = ' critical cases' /></>
+            }
           </ListItem>
           <div className = {classes.cards}>
             <Card variant='outlined' className={classes.covidDeath}>
               <CardContent>
                 <Typography variant='subtitle1' component='h4'>Death</Typography>
-                <Typography variant='inherit' component='h1'>{selected_country_data.total_deaths}</Typography>
+                <Typography variant='inherit' component='h1'>{spinner ? <Skeleton /> :  selected_country_data.total_deaths} </Typography>
+                <Typography variant='inherit' component='h2'>{spinner ? <Skeleton /> : ' + ' + selected_country_data.new_deaths}</Typography>
                 <Typography variant='body1'>Number of Death Cases of COVID-19</Typography>
-              </CardContent>
-            </Card>
-            <Card variant='outlined' className={classes.covidConfirmed}>
-            <CardContent>
-                <Typography variant='subtitle1' component='h4'>Confirmed</Typography>
-                <Typography variant='inherit' component='h1'>{selected_country_data.total_cases}</Typography>
-                <Typography variant='body1'>Number of Active Cases of COVID-19</Typography>
               </CardContent>
             </Card>
             <Card variant='outlined' className={classes.covidRecovered}>
             <CardContent>
                 <Typography variant='subtitle1' component='h4'>Recovered</Typography>
-                <Typography variant='inherit' component='h1'>{selected_country_data.total_recovered}</Typography>
+                <Typography variant='inherit' component='h1'>{spinner ? <Skeleton /> : selected_country_data.total_recovered}</Typography>
                 <Typography variant='body1'>Number of Recovered Cases of COVID-19</Typography>
+              </CardContent>
+            </Card>
+            <Card variant='outlined' className={classes.covidConfirmed}>
+            <CardContent>
+                <Typography variant='subtitle1' component='h4'>Confirmed</Typography>
+                <Typography variant='inherit' component='h1'>{spinner ? <Skeleton /> : selected_country_data.total_cases}</Typography>
+                <Typography variant='inherit' component='h2'>{spinner ? <Skeleton /> : ' + '+selected_country_data.new_cases}</Typography>
+                <Typography variant='body1'>Number of Active Cases of COVID-19</Typography>
               </CardContent>
             </Card>
           </div>

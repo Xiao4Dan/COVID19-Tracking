@@ -41,21 +41,21 @@ export default function SearchBar(props){
       });
 
     const handle_select = (selected) =>{
-        state.selection = selected
+        setState({
+            ...state,
+            selection: selected,
+        });
         props.handler(selected)
     }
 
     const handle_search = async (search) => {
-        var country_selections = [];
+        let country_selections = [];
         if(search !== ''){
             country_selections = await fetch_country_list(search);
+            state.options = country_selections;
+            //isnt react hooks in functions a bit too much work here
         }
-        console.log(country_selections);
-        setState({
-            ...state,
-            options: country_selections,
-        });
-        country_selections === [] ? handle_select('world') : handle_select(country_selections[0]);
+        country_selections === [] ? handle_select(undefined) : handle_select(country_selections[0]);
     };
 
     return(
@@ -71,7 +71,7 @@ export default function SearchBar(props){
                 >
                 <option value={state.selection} key={state.selection}>{state.selection}</option>
                 {state.options.map((v) => 
-                    <option value = {v} key={v}>{v}</option>
+                    <option value={v} key={v}>{v}</option>
                 )};
                 </NativeSelect>
             </FormControl>

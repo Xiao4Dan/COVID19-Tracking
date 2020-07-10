@@ -12,8 +12,9 @@ import { fetch_country_data } from './data_fetcher';
 export default class App extends Component{
   constructor(props){
     super(props);
-    this.state = {};
-    this.countries_data = [];
+    this.state = {
+      display:{}
+    };
     this.handle_select = this.handle_select.bind(this);
   }
 
@@ -22,24 +23,19 @@ export default class App extends Component{
   }
 
   async handle_select(selection){
-    console.log("selected: " + selection);
-    if(selection === ''){
-      selection = 'world'
-    }
     let new_selection = await fetch_country_data(selection);
-    this.setState(new_selection);
-    console.log('displaying: ' + selection);
-
+    this.setState({display:new_selection});
+    console.log('selected:'  + selection);
+    console.log(this.state);
   }
 
   render(){
     //variables
-
     return(
-    <div>
+    <div style={{minHeight: '100vh'}}>
       <NavBar />
       <SearchBar handler = {this.handle_select}/>
-      <Cards data = {this.state}/>
+      <Cards data = {this.state.display}/>
     </div>
     )
   }
