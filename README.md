@@ -16,7 +16,7 @@ This project is hosted on [Firebase](https://firebase.google.com/) at [trackv1ru
 * To code with it, view details in React's build in [Readme](https://github.com/Xiao4Dan/COVID19-Tracking/blob/master/covid19-tracking/README.md)
 * You will see the following in either ```localhost``` or the website
 
-![Screenshot](https://github.com/Xiao4Dan/COVID19-Tracking/blob/master/Screenshot.PNG?raw=true)
+![Screenshot](https://github.com/Xiao4Dan/COVID19-Tracking/blob/master/covid_landing.png?raw=true)
 
 # Conclusion
 
