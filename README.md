@@ -2,7 +2,7 @@
 
 This project is a COVID-19 Tracking App which I built in order to track the spread of covid-19 by country using an open [API](https://postman-toolboxes.github.io/covid-19/#featured-collections). The webpage is designed to be ```Minimalistic``` and ```responsive``` by screen width.
 
-This project is hosted on [Firebase](https://firebase.google.com/) at [m0vrec](https://m0vrec.web.app/)
+This project is hosted on [Firebase](https://firebase.google.com/) at [trackv1rus](https://trackv1rus.web.app/)
 
 ## Built with
 
