@@ -7,8 +7,8 @@ This project is hosted on [Firebase](https://firebase.google.com/) at [m0vrec](h
 ## Built with
 
 * [ReactJS](https://reactjs.org/)
+* [MaterialUI](https://material-ui.com/)
 * [NPM](https://www.npmjs.com/)
-* [OMDb API](http://www.omdbapi.com/)
 
 # Usage
 
@@ -16,10 +16,8 @@ This project is hosted on [Firebase](https://firebase.google.com/) at [m0vrec](h
 * To code with it, view details in React's build in [Readme](https://github.com/Xiao4Dan/COVID19-Tracking/blob/master/covid19-tracking/README.md)
 * You will see the following in either ```localhost``` or the website
 
-![Screenshot](https://github.com/Xiao4Dan/COVID19-Tracking/blob/master/mvrec_landing.png?raw=true)
+![Screenshot](https://github.com/Xiao4Dan/COVID19-Tracking/blob/master/Screenshot.PNG?raw=true)
 
 # Conclusion
 
-Features can be added by establishing database so that users can login and add friends.
-Then when they are out of ideas what to watch, simply browse unwatched recommendations from friends with similar interest, or invite friends to watch together.
-TBC
+Async await concurrency need to be optimized while continuous fetching is needed.
